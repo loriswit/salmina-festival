@@ -1,7 +1,40 @@
+<script setup lang="ts">
+import type { Event } from "~/composables/use-fetch-data"
+
+const currentEvent = useState<Event>("currentEvent")
+
+const startDate = currentEvent.value.start_date
+const endDate = currentEvent.value.end_date
+
+const startDateStr = startDate.toLocaleDateString("fr-CH", {
+  weekday: "long",
+  day: "numeric",
+  month: startDate.getMonth() !== endDate.getMonth() ? "long" : undefined,
+}).replace(",", "")
+
+const endDateStr = endDate.toLocaleDateString("fr-CH", {
+  weekday: "long",
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+}).replace(",", "")
+
+const extraDay = new Date(endDate.getTime() + 24 * 60 * 60 * 1000)
+const extraDayStr = extraDay.toLocaleDateString("fr-CH", {
+  weekday: "long",
+  day: "numeric",
+}).replace(",", "")
+
+const video = ref<HTMLVideoElement>()
+onMounted(() => {
+  if (video.value)
+    video.value.playbackRate = 1.5
+})
+</script>
+
 <template>
   <div class="about">
-    <p>Le <strong>Salmina Festival</strong> est un petit festival entre potes avec musique, pétanque et grillades.
-    </p>
+    <p>Le <strong>Salmina Festival</strong> est un petit festival entre potes avec musique, pétanque et grillades.</p>
 
     <p>
       <NuxtLink class="button" to="/inscription">Prendre des billets</NuxtLink>
@@ -10,30 +43,36 @@
     <p class="large"><strong>Les places sont limitées&nbsp;!</strong></p>
 
     <h2>Quand</h2>
-    <p>Du <strong>vendredi 19 au samedi 20 juillet 2024</strong>, ainsi que le dimanche 21 durant la journée pour
-      les motivés.</p>
+    <p>Du <strong>{{ startDateStr }}</strong> au <strong>{{ endDateStr }}</strong>, ainsi que le {{ extraDayStr }}
+      durant la journée pour les motivés.</p>
 
     <h2>Où</h2>
     <p>Dans une cabane dans la forêt, entre Cheyres et Murist. Le lieu exact sera donné peu de temps avant le début
       de l'évènement.</p>
 
+    <img src="~/assets/images/molkky.webp" alt="Mölkky">
+
     <h2>Quoi</h2>
-    <p><strong>Durant la journée</strong>&nbsp;: tournois de pétanque, ping-pong, grillades, musique, baignade (le
-      lac est à 10 min en voiture, 1 heure à pied).</p>
+    <p><strong>Durant la journée</strong>&nbsp;: tournois de pétanque, ping-pong, cartes, grillades, musique, baignade
+      (le lac est à 10 min en voiture, 1 heure à pied).</p>
+
+    <img src="~/assets/images/ping.webp" alt="ping-pong">
 
     <p><strong>Durant la nuit</strong>&nbsp;: système son et table de mixage à disposition pour DJs de tous les
-      horizons. Tous les
-      styles de musique sont autorisés&nbsp;!
-      Faites-nous savoir si vous êtes intéressés à mixer.</p>
+      horizons. Tous les styles de musique sont autorisés&nbsp;! Faites-nous savoir si vous êtes intéressés à mixer.</p>
 
-    <img src="~/assets/images/petanque.webp" alt="pétanque">
+    <video ref="video" autoplay loop muted>
+      <source src="~/assets/videos/fiesta.mp4" type="video/mp4">
+    </video>
 
     <h2>Manger</h2>
-    <p>Plusieurs repas proposés par notre super chef cuisto tout au long du weekend. Tous les repas sont <strong>végétariens</strong>
-      et chacun
-      coute CHF 5.</p>
-    <p>Pour ceux qui le souhaitent, un <strong>grand grill</strong> avec broches motorisées est à disposition.
-      Chacun amène sa propre bidoche (possibilité de se coordonner à plusieurs).</p>
+
+    <p><strong>Vendredi soir et samedi soir</strong>&nbsp;: un <strong>grand grill</strong> avec broches motorisées est
+      à disposition. Chacun amène ses propres trucs à griller, et il y aura quelques salades à disposition en guise
+      d'accompagnement.</p>
+
+    <p><strong>Samedi midi et dimanche midi</strong>&nbsp;: deux repas sont proposés par notre super cheffe cuisto.
+      Ces deux repas sont <strong>végétariens</strong> et coutent chacun CHF 5.</p>
 
     <img src="~/assets/images/manger.webp" alt="manger">
 
@@ -41,8 +80,7 @@
     <p>Bières, Pastis et autres jus seront proposés à des prix abordables.</p>
 
     <h2>Dormir</h2>
-    <p>Le dortoir est assez petit et est donc <strong>réservé en priorité aux organisateurs et aux
-      collaborateurs</strong> (cuisine, artistes, etc.).
+    <p>Le dortoir est assez petit et est donc <strong>réservé en priorité aux organisateurs</strong>.
       Il est possible d'y installer une tente dans le gazon. Il est évidemment possible de dormir dans une
       voiture, sur une table, sous un arbre, ne pas dormir, etc.</p>
     <p>Plus de détails sur les places disponibles seront donnés peu avant l'évènement, en fonction du nombre de
@@ -55,9 +93,7 @@
       <NuxtLink class="button" to="/inscription">Prendre des billets</NuxtLink>
     </p>
 
-    <video autoplay loop muted>
-      <source src="~/assets/videos/boumboum.mp4" type="video/mp4">
-    </video>
+    <img src="~/assets/images/sieste.webp" alt="sieste">
   </div>
 </template>
 
@@ -103,7 +139,7 @@ p {
 
 strong {
   font-weight: normal;
-  color: #ec7d9e;
+  color: #dd7df3;
 }
 
 button, .button {

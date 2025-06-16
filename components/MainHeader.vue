@@ -30,6 +30,7 @@ const year = startDate.getFullYear()
 
 <style scoped>
 .main-header {
+  text-shadow: 0 0 1em #fff6;
   text-align: center;
   max-width: 80%;
   margin: auto;
