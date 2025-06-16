@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { type Event, useFetchEvent } from "~/composables/use-fetch-data"
 import { formatMealDate } from "~/utils/helpers"
+import "~/assets/styles/spinner.css"
 
 const { session, fetch: refreshSession } = useUserSession()
 
@@ -35,7 +36,10 @@ const totalPrice = computed(() =>
     .reduce((sum, { item }) => sum + item.price, 0) +
   (ticketInputs.value.filter(ticket => ticket.checked).length >= 2 ? event.ticket_discount : 0))
 
+const loading = ref(false)
+
 async function register() {
+  loading.value = true
   const payload = {
     name: nameInput.value,
     conditionsRead: conditionsRead.value,
@@ -53,6 +57,8 @@ async function register() {
 
   } catch (e) {
     alert(e instanceof Error ? e.message : e)
+  } finally {
+    loading.value = false
   }
 }
 </script>
@@ -94,8 +100,9 @@ async function register() {
 
       <p>Prix total&nbsp;: CHF {{ totalPrice }}</p>
 
-      <button id="button">
-        <span id="buttonText">{{ session?.registration ? "Enregistrer" : "S'inscrire" }}</span>
+      <button type="submit" :disabled="loading">
+        <span v-if="!loading">{{ session?.registration ? "Enregistrer" : "S'inscrire" }}</span>
+        <span v-else class="spinner"/>
       </button>
     </template>
   </form>
@@ -141,7 +148,7 @@ form {
   color: #f38
 }
 
-input:not([type=checkbox]), button, a.button, #confirmation {
+input:not([type=checkbox]), button, a.button {
   width: 100%;
   height: 50px;
   margin: 0;

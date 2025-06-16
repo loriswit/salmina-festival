@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { type Event, useFetchEvent } from "~/composables/use-fetch-data"
 import { FetchError } from "ofetch"
+import { type Event, useFetchEvent } from "~/composables/use-fetch-data"
+import "~/assets/styles/main.css"
 
 const currentEvent = useState<Event>("currentEvent")
 
@@ -29,80 +30,7 @@ useHead({ title: currentEvent.value.name })
 </template>
 
 <style>
-@font-face {
-  font-family: "Condensed";
-  src: url("~/assets/fonts/tcceb.ttf");
-}
-
-:root {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-  --small-gap: 15px;
-  font-size: 20px;
-  color: #fff;
-}
-
-html, body {
-  min-height: 100%;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-a {
-  color: cornflowerblue;
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-a:hover {
-  color: orange;
-}
-
-body {
-  font-family: Condensed, sans-serif;
-  background: linear-gradient(black, #20203f) fixed;
-  margin: 0;
-}
-
 main {
   padding: 1em;
-}
-
-button, a.button {
-  padding: var(--small-gap);
-  border: none;
-  transform: skew(-5deg);
-  font-size: .9em;
-  color: white;
-  text-decoration: none;
-  background-color: #1778b9;
-  text-transform: uppercase;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-button:focus-visible, a.button:focus-visible {
-  outline: 2px solid white
-}
-
-button:not(:disabled) {
-  cursor: pointer
-}
-
-button:hover:not(:disabled), a.button:hover:not(:disabled) {
-  background-color: #409ad6
-}
-
-button:disabled, a.button:disabled {
-  background-color: #3b7ba2
-}
-
-input, select, textarea, button {
-  font-family: inherit;
 }
 </style>
