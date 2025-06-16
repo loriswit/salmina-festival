@@ -18,8 +18,8 @@ export default defineEventHandler(async event => {
     throw createError({ statusCode: 400, statusMessage: result.error.message })
 
   const [registration] = await sql`insert into registrations (event_id, name, conditions_read, conditions_accepted, message)
-                                   values (${id}, ${body.name}, ${body.conditionsRead}, ${body.conditionsAccepted},
-                                           ${body.message})
+                                   values (${id}, ${body.name}, ${body.conditionsRead ?? false},
+                                           ${body.conditionsAccepted ?? false}, ${body.message})
                                    returning id`
 
   await sql.query("insert into registrations_tickets (registration_id, ticket_id) values " +

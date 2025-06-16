@@ -18,8 +18,6 @@ const ticketInputs = ref(event.tickets.map(ticket =>
 const mealInputs = ref(event.meals.map(meal =>
   ({ checked: registration.meals?.some(m => m.id === meal.id) ?? false, item: meal })))
 const messageInput = ref(registration.message ?? "")
-const conditionsRead = ref(registration.conditions_read ?? false)
-const conditionsAccepted = ref(registration.conditions_accepted ?? false)
 
 const hasSomeTicket = computed(() => ticketInputs.value.some(ticket => ticket.checked))
 
@@ -42,8 +40,6 @@ async function register() {
   loading.value = true
   const payload = {
     name: nameInput.value,
-    conditionsRead: conditionsRead.value,
-    conditionsAccepted: conditionsAccepted.value,
     message: messageInput.value,
     tickets: ticketInputs.value.filter(input => input.checked).map(input => input.item.id),
     meals: mealInputs.value.filter(input => input.checked).map(input => input.item.id),

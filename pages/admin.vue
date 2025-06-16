@@ -15,6 +15,7 @@ const { data: eventList } = await useFetch<Event[]>("/api/events")
 const eventId = ref(currentEvent.value.id)
 
 const isCurrentEvent = computed(() => eventList.value?.[0].id === eventId.value)
+const eventYear = computed(() => currentEvent.value.start_date.getFullYear())
 
 const event = ref<Event>() as Ref<Event>
 await updateEvent()
@@ -213,7 +214,7 @@ function formatDate(date: Date | null): string {
           <th>Nom</th>
           <th>Billets</th>
           <th>Repas</th>
-          <th colspan="2">Conditions acceptées / lues</th>
+          <th v-if="eventYear === 2024" colspan="2">Conditions acceptées / lues</th>
           <th>Message</th>
           <th v-if="paid">Payé le</th>
           <th v-else>Inscrit le</th>
@@ -226,8 +227,8 @@ function formatDate(date: Date | null): string {
           <td>{{ registration.name }}</td>
           <td>{{ registration.tickets.map(ticket => ticket.id).join(", ") }}</td>
           <td>{{ registration.meals.map(meal => meal.id).join(", ") }}</td>
-          <td>{{ registration.conditions_accepted ? "oui" : "" }}</td>
-          <td>{{ registration.conditions_read ? "oui" : "" }}</td>
+          <td v-if="eventYear === 2024">{{ registration.conditions_accepted ? "oui" : "" }}</td>
+          <td v-if="eventYear === 2024">{{ registration.conditions_read ? "oui" : "" }}</td>
           <td class="message">
             <div>{{ registration.message }}</div>
           </td>
