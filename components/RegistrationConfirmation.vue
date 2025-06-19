@@ -21,14 +21,14 @@ async function editRegistration() {
 </script>
 
 <template>
-  <p>Tu es inscrit·e au festival&nbsp;! 🎉</p>
+  <p>Tu es inscrit·e·x au festival&nbsp;! 🎉</p>
 
   <p>Afin de pouvoir se coordonner, nous te recommander de rejoindre notre groupe WhatsApp.</p>
 
   <p><a class="button whatsapp" :href="currentEvent.chat_group">groupe WhatsApp</a></p>
 
   <p v-if="!registration.has_paid">Pour confirmer ton inscription et réserver ta place, il ne te reste
-    plus qu'à payer le montant ci-dessous à un organisateur.</p>
+    plus qu'à payer le montant ci-dessous à un organisateur·rice·x.</p>
 
   <p v-else>Tu as déjà payé et ton inscription est confirmée.</p>
 

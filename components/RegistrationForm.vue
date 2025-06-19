@@ -81,7 +81,7 @@ async function register() {
 
     <template v-if="hasSomeTicket">
       <p>Repas</p>
-      <p class="disclaimer">🌿 Tous les repas sont végétariens&nbsp;! 🌿</p>
+      <p class="disclaimer">🌿 Tous les repas sont végans 🌿</p>
 
       <div class="meals">
         <label v-for="mealInput in mealInputs" :key="mealInput.item.id" class="field">
@@ -95,7 +95,7 @@ async function register() {
       </div>
 
       <p/>
-      <textarea v-model="messageInput" rows="5" placeholder="Petit message pour les organisateurs"/>
+      <textarea v-model="messageInput" rows="5" placeholder="Petit message pour les organisateur·rice·x·s"/>
 
       <p>Prix total&nbsp;: CHF {{ totalPrice }}</p>
 

@@ -44,10 +44,10 @@ onMounted(() => {
 
     <h2>Quand</h2>
     <p>Du <strong>{{ startDateStr }}</strong> au <strong>{{ endDateStr }}</strong>, ainsi que le {{ extraDayStr }}
-      durant la journée pour les motivés.</p>
+      durant la journée pour les motivé·e·x·s.</p>
 
     <h2>Où</h2>
-    <p>Dans une cabane dans la forêt, entre Cheyres et Murist. Le lieu exact sera donné peu de temps avant le début
+    <p>Dans une cabane dans la forêt, entre Cheyres et Murist. Le lieu exact sera communiqué peu de temps avant le début
       de l'évènement.</p>
 
     <img src="~/assets/images/molkky.webp" alt="Mölkky">
@@ -59,7 +59,8 @@ onMounted(() => {
     <img src="~/assets/images/ping.webp" alt="ping-pong">
 
     <p><strong>Durant la nuit</strong>&nbsp;: système son et table de mixage à disposition pour DJs de tous les
-      horizons. Tous les styles de musique sont autorisés&nbsp;! Faites-nous savoir si vous êtes intéressés à mixer.</p>
+      horizons. Tous les styles de musique sont autorisés&nbsp;! Faites-nous savoir si vous êtes intéressé·e·x·s à
+      mixer.</p>
 
     <video ref="video" autoplay loop muted>
       <source src="~/assets/videos/fiesta.mp4" type="video/mp4">
@@ -67,12 +68,12 @@ onMounted(() => {
 
     <h2>Manger</h2>
 
-    <p><strong>Vendredi soir et samedi soir</strong>&nbsp;: un <strong>grand grill</strong> avec broches motorisées est
-      à disposition. Chacun amène ses propres trucs à griller, et il y aura quelques salades à disposition en guise
+    <p><strong>Vendredi soir et samedi soir</strong>&nbsp;: un <strong>grand grill</strong> est à disposition.
+      Chacun amène ses <strong>propres trucs à griller</strong>. Le samedi soir, il y aura quelques salades en guise
       d'accompagnement.</p>
 
     <p><strong>Samedi midi et dimanche midi</strong>&nbsp;: deux repas sont proposés par notre super cheffe cuisto.
-      Ces deux repas sont <strong>végétariens</strong> et coutent chacun CHF 5.</p>
+      Ces deux repas sont <strong>végans</strong> et coutent chacun CHF 5.</p>
 
     <img src="~/assets/images/manger.webp" alt="manger">
 
@@ -80,11 +81,11 @@ onMounted(() => {
     <p>Bières, Pastis et autres jus seront proposés à des prix abordables.</p>
 
     <h2>Dormir</h2>
-    <p>Le dortoir est assez petit et est donc <strong>réservé en priorité aux organisateurs</strong>.
+    <p>Le dortoir est assez petit et est donc <strong>réservé en priorité aux organisateur·rice·x·s</strong>.
       Il est possible d'y installer une tente dans le gazon. Il est évidemment possible de dormir dans une
       voiture, sur une table, sous un arbre, ne pas dormir, etc.</p>
     <p>Plus de détails sur les places disponibles seront donnés peu avant l'évènement, en fonction du nombre de
-      personnes inscrites.</p>
+      personnes inscrit·e·x·s.</p>
 
     <h2>Alain Berset</h2>
     <p>Il est invité.</p>
