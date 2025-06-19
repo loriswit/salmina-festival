@@ -5,7 +5,7 @@ export const RegistrationSchema = z.object({
   conditionsRead: z.boolean().optional(),
   conditionsAccepted: z.boolean().optional(),
   message: z.string().optional(),
-  tickets: z.array(z.number()),
+  tickets: z.array(z.number()).min(1),
   meals: z.array(z.number()),
   hasPaid: z.boolean().optional(),
 })

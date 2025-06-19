@@ -37,6 +37,9 @@ const totalPrice = computed(() =>
 const loading = ref(false)
 
 async function register() {
+  if (!hasSomeTicket.value)
+    return
+
   loading.value = true
   const payload = {
     name: nameInput.value,
