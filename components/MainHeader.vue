@@ -18,7 +18,7 @@ const year = startDate.getFullYear()
 
 <template>
   <div class="main-header"><h1>
-    <span>Salmina</span>
+    <span>Vounaise</span>
     <span>Festival</span>
     <span>{{ year }}</span>
   </h1>
@@ -47,17 +47,18 @@ h1 {
   justify-content: center;
   line-height: 1.1em;
   transform: skew(-5deg);
-}
 
-h1 > span:first-child {
-  font-size: 0.96em;
-  line-height: 0.6em;
-}
+  > span:first-child {
+    font-size: 0.96em;
+    letter-spacing: 0.04em;
+    line-height: 0.6em;
+  }
 
-h1 > span:last-child {
-  font-size: 1.7em;
-  letter-spacing: 0.15em;
-  margin-right: -0.15em;
+  > span:last-child {
+    font-size: 1.7em;
+    letter-spacing: 0.15em;
+    margin-right: -0.15em;
+  }
 }
 
 .info {

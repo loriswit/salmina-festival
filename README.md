@@ -1,6 +1,6 @@
-# Salmina Festival
+# Vounaise Festival
 
-Site web pour gérer les inscriptions au [Salmina Festival](https://salmina.party/).
+Site web pour gérer les inscriptions au [Vounaise Festival](https://vounaise.party/).
 
 ## Installation
 

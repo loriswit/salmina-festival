@@ -13,7 +13,7 @@ const total = registration.tickets.reduce((acc, ticket) => acc + ticket.price, 0
   (hasDiscount ? currentEvent.value.ticket_discount : 0) +
   registration.discount
 
-const twintCode = `salmina${currentEvent.value.start_date.getFullYear()} ${registration.hash.slice(0, 10)}`
+const twintCode = `vounaise${currentEvent.value.start_date.getFullYear()} ${registration.hash.slice(0, 10)}`
 
 async function editRegistration() {
   await $fetch("/api/login", { method: "post", headers: { "Authorization": generateBasicAuth("", registration.hash) } })

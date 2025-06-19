@@ -34,7 +34,7 @@ onMounted(() => {
 
 <template>
   <div class="about">
-    <p>Le <strong>Salmina Festival</strong> est un petit festival entre potes avec musique, pétanque et grillades.</p>
+    <p>Le <strong>Vounaise Festival</strong> est un petit festival entre potes avec musique, pétanque et grillades.</p>
 
     <p>
       <NuxtLink class="button" to="/inscription">Prendre des billets</NuxtLink>
