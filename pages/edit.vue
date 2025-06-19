@@ -10,7 +10,7 @@ if (typeof query.token === "string") {
   try {
     await $fetch("/api/login", { method: "post", headers: { "Authorization": generateBasicAuth("", query.token) } })
     await refreshSession()
-    await navigateTo("/inscription")
+    await navigateTo("/inscription", { replace: true })
   } catch (e) {
     if (e instanceof FetchError && e.status === 401)
       throw createError({ statusCode: 401 })
