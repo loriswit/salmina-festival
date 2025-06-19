@@ -6,11 +6,12 @@ const { session, clear: clearSession, fetch: refreshSession } = useUserSession()
 const currentEvent = useState<Event>("currentEvent")
 const registration = await useFetchRegistration(session.value?.registration as number)
 
-const hadDiscount = registration.tickets.length >= 2
+const hasDiscount = registration.tickets.length >= 2
 
 const total = registration.tickets.reduce((acc, ticket) => acc + ticket.price, 0) +
   registration.meals.reduce((acc, ticket) => acc + ticket.price, 0) +
-  (hadDiscount ? currentEvent.value.ticket_discount : 0)
+  (hasDiscount ? currentEvent.value.ticket_discount : 0) +
+  registration.discount
 
 const twintCode = `salmina${currentEvent.value.start_date.getFullYear()} ${registration.hash.slice(0, 10)}`
 
@@ -42,9 +43,13 @@ async function editRegistration() {
       <th>{{ meal.name }}</th>
       <td>{{ meal.price.toFixed(2) }}</td>
     </tr>
-    <tr v-if="hadDiscount">
+    <tr v-if="hasDiscount">
       <th>Rabais deux jours</th>
       <td>{{ currentEvent.ticket_discount.toFixed(2) }}</td>
+    </tr>
+    <tr v-if="registration.discount !== 0" class="special-discount">
+      <th>Rabais spécial</th>
+      <td>{{ registration.discount.toFixed(2) }}</td>
     </tr>
     <tr class="total">
       <th>Total</th>
@@ -117,6 +122,16 @@ tr.total td, tr.total th {
   margin: 1em auto;
   background-color: #00a884;
 
+  &::before {
+    --icon-size: 1em;
+    content: "";
+    height: var(--icon-size);
+    width: var(--icon-size);
+    margin-right: 0.5em;
+    background-image: url("~/assets/images/whatsapp.svg");
+    background-size: var(--icon-size) var(--icon-size);
+  }
+
   &:hover:not(:disabled) {
     background-color: #36d1ae;
   }
@@ -128,5 +143,9 @@ tr.total td, tr.total th {
   flex-direction: column;
   align-items: center;
   gap: 1em;
+}
+
+.special-discount :is(th, td) {
+  color: mediumspringgreen;
 }
 </style>

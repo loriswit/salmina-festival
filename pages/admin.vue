@@ -302,7 +302,7 @@ td:not(.message) {
 }
 
 td.discount {
-  color: mediumseagreen;
+  color: mediumspringgreen;
   font-style: italic;
 }
 
