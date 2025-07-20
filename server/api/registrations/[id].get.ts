@@ -9,7 +9,7 @@ export default defineEventHandler(async event => {
 
   const [registration] = await sql`select *
                                    from registrations
-                                   where id = ${id}`
+                                   where id = ${id} and archived = false`
 
   if (registration === undefined)
     throw createError({

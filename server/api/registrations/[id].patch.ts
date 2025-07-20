@@ -28,6 +28,16 @@ export default defineEventHandler(async event => {
       throw createError({ statusCode: 400, statusMessage: "Inscription déjà payée" })
   }
 
+  // mark as archived (admin only)
+  if ("archived" in body) {
+    if (session.user?.role !== "admin")
+      throw createError({ statusCode: 403, statusMessage: "Forbidden" })
+
+    await sql`update registrations
+              set archived = ${body.archived}
+              where id = ${id}`
+  }
+
   const result = RegistrationSchema.partial().safeParse(body)
   if (!result.success)
     throw createError({ statusCode: 400, statusMessage: result.error.message })

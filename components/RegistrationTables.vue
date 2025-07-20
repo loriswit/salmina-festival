@@ -195,6 +195,9 @@ function formatDate(date: Date | null): string {
                 Marquer comme payé
               </button>
               <NuxtLink class="button" :to="{name: 'edit', query: {token: registration.hash} }">Modifier</NuxtLink>
+              <button @click.prevent="$emit('updateRegistration', registration.id, { archived: true })">
+                Archiver
+              </button>
             </template>
           </div>
         </td>

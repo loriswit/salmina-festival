@@ -8,4 +8,5 @@ export const RegistrationSchema = z.object({
   tickets: z.array(z.number()).min(1),
   meals: z.array(z.number()),
   hasPaid: z.boolean().optional(),
+  archived: z.boolean(),
 })
